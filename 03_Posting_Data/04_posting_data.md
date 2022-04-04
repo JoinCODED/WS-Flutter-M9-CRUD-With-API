@@ -100,7 +100,7 @@ Return the book from the function:
 Now Back to our provider, we'll make almost the same function:
 
 ```dart
-  Future<void> createBook(Book book) async {
+  void createBook(Book book) async {
     await DioClient().createBook(book: book);
   }
 ```
