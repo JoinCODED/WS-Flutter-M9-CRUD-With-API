@@ -23,7 +23,7 @@ So in your `dio` file, create a method that returns future void and takes `int` 
 And in our provider:
 
 ```dart
-  Future<void> deleteBook(int bookId) async {
+  void deleteBook(int bookId) async {
     await DioClient().deleteBook(bookId: bookId);
     books.removeWhere((book) => book.id == bookId);
     notifyListeners();
