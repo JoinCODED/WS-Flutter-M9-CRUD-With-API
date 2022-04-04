@@ -43,7 +43,7 @@ And in our provider:
 Don't forget, in order to see the changes in the frontend too we need to update the book that is in our list too.
 
 ```dart
-  Future<void> updateBook(Book book) async {
+  void updateBook(Book book) async {
     Book newBook = await DioClient().updateBook(book: book);
     int index = books.indexWhere((book) => book.id == newBook.id);
     books[index] = newBook;
