@@ -18,6 +18,9 @@ Download the starter project from GitHub, then open the project by using the VS 
 You will find `pages` folder with one page `home_page.dart`.
 
 `models` folder with a model `book.dart`.
+
 `providers` folder with a `books_provider.dart`.
+
 `widgets` folder with a `book_card.dart`.
+
 finally, in `main.dart` you will find everything ready, provider and routes.
