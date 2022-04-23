@@ -1,8 +1,8 @@
-In our application, we will need a server that will provide us with the books data we need, and the server that we will use is the `http://10.0.2.2:5000`. This server will provide us with the data we need and will accept some operations on the data.
+In our application, we will need a server that will provide us with the books data we need, and the server that we will use is the `https://coded-books-api-crud.herokuapp.com`. This server will provide us with the data we need and will accept some operations on the data.
 
 To communicate with this server, we will use the HTTP requests.
 
-// backend image
+![img](https://miro.medium.com/max/1400/1*2UbC5pSRyjGmF1ezB9hvYg.png)
 
 We will use the `dio` library in order to request the date. We will tell the server we need the list of books with their price, title, image etc..., and then the server will send us back the data we need.
 
