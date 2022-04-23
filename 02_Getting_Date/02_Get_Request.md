@@ -18,7 +18,7 @@ We will mark it as `async` because it yields a future, and we will initialize th
 Now we call call our `_dio` clint and make a call, let's take a look at our endpoint one last time:
 
 ```
-Get, http://http://10.0.2.2:5000/books
+Get, https://coded-books-api-crud.herokuapp.com/books
 ```
 
 What does that `Get` word means? it means the http method we should use is a `get` method, so we call tell `_dio` we want to make a `get` request like this:
@@ -104,7 +104,7 @@ And inside our function, we will call the function that we created in the servic
 
 ```dart
   Future<void> getBooks() async {
-    books = await DioClient().getBooks();
+    books = await BooksServices().getBooks();
   }
 ```
 

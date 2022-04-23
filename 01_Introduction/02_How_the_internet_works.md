@@ -53,8 +53,8 @@ class Book {
 And here is our API end points and we will go through them one by one:
 
 ```
-Get, http://http://10.0.2.2:5000/books
-Post, http://http://10.0.2.2:5000/books
-Put, http://http://10.0.2.2:5000/books/{bookId}
-Delete, http://http://10.0.2.2:5000/books/{bookId}
+Get, https://coded-books-api-crud.herokuapp.com/books
+Post, https://coded-books-api-crud.herokuapp.com/books
+Put, https://coded-books-api-crud.herokuapp.com/books/{bookId}
+Delete, https://coded-books-api-crud.herokuapp.com/books/{bookId}
 ```

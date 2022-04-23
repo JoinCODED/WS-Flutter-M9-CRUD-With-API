@@ -14,10 +14,10 @@ Now let's import the `dio` package in our new file:
 import "package:dio/dio.dart";
 ```
 
-Then, we will create a new `DioClient` class:
+Then, we will create a new `BooksServices` class:
 
 ```dart
-class DioClient {
+class BooksServices {
 }
 ```
 
@@ -32,26 +32,26 @@ We are making it private because it should'nt be accessed outside this file.
 Now let's take a look at our api endpoints again:
 
 ```
-Get, http://http://10.0.2.2:5000/books
-Post, http://http://10.0.2.2:5000/books
-Put, http://http://10.0.2.2:5000/books/{bookId}
-Delete, http://http://10.0.2.2:5000/books/{bookId}
+Get, https://coded-books-api-crud.herokuapp.com/books
+Post, https://coded-books-api-crud.herokuapp.com/books
+Put, https://coded-books-api-crud.herokuapp.com/books/{bookId}
+Delete, https://coded-books-api-crud.herokuapp.com/books/{bookId}
 ```
 
-You may have noticed, they are all start with the same `http://http://10.0.2.2:5000`, so it would be a smart idea to hold this value in a variable and let's name it `baseUrl`:
+You may have noticed, they are all start with the same `https://coded-books-api-crud.herokuapp.com`, so it would be a smart idea to hold this value in a variable and let's name it `baseUrl`:
 
 ```dart
-class DioClient {
+class BooksServices {
   final Dio _dio = Dio();
 
-  final _baseUrl = 'http://10.0.2.2:5000';
+  final _baseUrl = 'https://coded-books-api-crud.herokuapp.com';
 }
 ```
 
 Thats it, we are ready to make our first api call, which is this one:
 
 ```
-Get, http://http://10.0.2.2:5000/books
+Get, https://coded-books-api-crud.herokuapp.com/books
 ```
 
 Try it in your browser first, see how the data looks, exactly like our model, in fact, we should always look at the data first then create out model to match that data shape.

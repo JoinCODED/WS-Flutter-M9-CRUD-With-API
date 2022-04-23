@@ -3,7 +3,7 @@ I know you are exhausted, this is the last one, and the easiest.
 Let's take a look at our endpoint:
 
 ```
-Delete, http://http://10.0.2.2:5000/books/{bookId}
+Delete, https://coded-books-api-crud.herokuapp.com/books/{bookId}
 ```
 
 What we only need, is the `id` of the book we wanna delete.
@@ -24,7 +24,7 @@ And in our provider:
 
 ```dart
   void deleteBook(int bookId) async {
-    await DioClient().deleteBook(bookId: bookId);
+    await BooksServices().deleteBook(bookId: bookId);
     books.removeWhere((book) => book.id == bookId);
     notifyListeners();
   }

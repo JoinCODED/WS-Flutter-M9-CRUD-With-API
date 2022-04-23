@@ -3,7 +3,7 @@ Back to our `dio` file, we'll create a function that is very similar to the `cre
 So what is our endpoint?
 
 ```
-Put, http://http://10.0.2.2:5000/books/{bookId}
+Put, https://coded-books-api-crud.herokuapp.com/books/{bookId}
 ```
 
 The method is `put` and we need to also send the `{bookId}` in the url, how to do this?
@@ -36,7 +36,7 @@ And in our provider:
 
 ```dart
   Future<void> updateBook(Book book) async {
-    await DioClient().updateBook(book: book);
+    await BooksServices().updateBook(book: book);
   }
 ```
 
@@ -44,7 +44,7 @@ Don't forget, in order to see the changes in the frontend too we need to update 
 
 ```dart
   void updateBook(Book book) async {
-    Book newBook = await DioClient().updateBook(book: book);
+    Book newBook = await BooksServices().updateBook(book: book);
     int index = books.indexWhere((book) => book.id == newBook.id);
     books[index] = newBook;
     notifyListeners();
