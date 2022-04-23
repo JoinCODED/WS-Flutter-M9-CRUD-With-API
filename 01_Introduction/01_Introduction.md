@@ -11,7 +11,7 @@ We will learn how to use:
 
 Download the starter project from GitHub, then open the project by using the VS Code, and get the packages.
 
-(BooksApp)[https://github.com/JoinCODED/Demo-Flutter-Api-BooksApp-StartingPoint]
+[BooksApp](https://github.com/JoinCODED/Demo-Flutter-Api-BooksApp-StartingPoint)
 
 ## Project Structure:
 
