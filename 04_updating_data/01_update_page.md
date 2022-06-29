@@ -1,6 +1,4 @@
-Like we did with the `add_page.dart`, create a page for updating a book, as well as a form for that:
-
-`update_page.dart`:
+1. Create a new page responsible for updating books and name it `update_page.dart`. Create a form for the updated data too:
 
 ```dart
 class UpdatePage extends StatelessWidget {
@@ -29,9 +27,9 @@ class UpdatePage extends StatelessWidget {
 }
 ```
 
-The difference here is that our widget expects a book as an argument.
-
-`update_form.dart`:
+The difference here is that the `update_form.dart` widget expects a book as an argument.
+**Note**: The reason that this widget requires a book as an argument is because when the user wants to update a book, he will use a form for that, and since the book has more than one property to be updated, the user might change a specific property and keep the others as they are.
+If we do not send the book data to the `update_form.dart`, we cannot fill the fields that the user did not update. Because of that, we cannot tell the backend to keep the rest of the data as it is, so the backend will receive the rest of the fields as empty and will remove the values of the book properties that the user did not fill.
 
 ```dart
 class UpdateBookForm extends StatefulWidget {
@@ -159,5 +157,3 @@ class UpdateFormState extends State<UpdateBookForm> {
   }
 }
 ```
-
-The difference here is also that our widget expects a book as an argument.

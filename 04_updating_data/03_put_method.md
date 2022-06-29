@@ -1,12 +1,12 @@
-Back to our `dio` file, we'll create a function that is very similar to the `createBook` function.
-
-So what is our endpoint?
+Here is the endpoint for updating a book:
 
 ```
 Put, https://coded-books-api-crud.herokuapp.com/books/{bookId}
 ```
 
-The method is `put` and we need to also send the `{bookId}` in the url, how to do this?
+**Note:** The put method requires data which is the updated book, as well as the `id` of the book we want to update.
+
+7. Back to the `dio` file, create a function named `updateBook` similar to the `createBook` function.
 
 ```dart
   Future<Book> updateBook({required Book book}) async {
@@ -32,7 +32,7 @@ The method is `put` and we need to also send the `{bookId}` in the url, how to d
   }
 ```
 
-And in our provider:
+8. In the provider file, create a future function that takes the updated book as an argument and passes it to the `updateBook` function:
 
 ```dart
   Future<void> updateBook(Book book) async {
@@ -40,7 +40,9 @@ And in our provider:
   }
 ```
 
-Don't forget, in order to see the changes in the frontend too we need to update the book that is in our list too.
+**Reminder:** In order to see the changes in the frontend, you need to update the book there as well.
+
+9. Inside the `updateBook` function, use the `indexWhere` method to look for the index of the book that has an id that matches the received book's id. Replace the found book with the updated book that we received as a response from the backend.
 
 ```dart
   void updateBook(Book book) async {
@@ -51,9 +53,7 @@ Don't forget, in order to see the changes in the frontend too we need to update 
   }
 ```
 
-We found the `index` of our book that we want to update, then we replaced it with the book that came as a response from the backend.
-
-Lastly, let's go to our form button and call our method:
+10. Go to the `Update Book` button inside the form and call the `updateBook` method:
 
 ```dart
 ElevatedButton(
@@ -74,4 +74,4 @@ ElevatedButton(
             ),
 ```
 
-Pay attention, this time we provided an `id` because the backend need it to know which book to update!
+**Note:** This time we provided an `id` because the backend needs it to know which book to update.

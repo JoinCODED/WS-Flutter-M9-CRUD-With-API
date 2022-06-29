@@ -1,13 +1,11 @@
-Back to our `services/books.dart` file.
-
-We will create a new function that takes a `Book` as an argument and returns a `Book` object.
+1. In the `services/books.dart` file, create a new function that takes a `Book` as an argument and returns a `Book` object.
 
 ```dart
   Future<Book> createBook({required Book book}) async {
   }
 ```
 
-Then we will create a variable of type `Book` and we will mark it as `late` because we will initialize it later:
+2. Create a variable of type `Book` and mark it as `late` because you will initialize it later:
 
 ```dart
   Future<Book> createBook({required Book book}) async {
@@ -15,15 +13,13 @@ Then we will create a variable of type `Book` and we will mark it as `late` beca
   }
 ```
 
-But why will the backend return a `Book` to us since we already have all the data?
+Why do we need the backend to return a `Book` if we already have all the data?
 
-Remember when we used to generate an `id` for our object? now the backend takes handle of this, it will return to us the `Book` with a unique `id`.
+We used to generate an `id` manually for the object. However, now the backend will take care of that and return the `Book` with a unique `id`.
 
-And remember when I told you we use `JSON` to send and receive data? well I lied, there's one exception where we don't use `JSON` to send our data, you saw how `JSON` is a key-value pair of strings, you can't store files in it, and we have an image, that's why we will use `FormData` here.
+**Note:** We use `JSON` to send and receive data, except when we use data of type files, because we cannot store files in a `key-value` pair. Instead, we use `FormData` to store these types of data.
 
-Again, if we did'nt have an image here, we wouldn't have used `FormDate`, and we will go over this case later.
-
-Add your try-catch block:
+3. Add the try-catch block:
 
 ```dart
   Future<Book> createBook({required Book book}) async {
@@ -43,15 +39,15 @@ Add your try-catch block:
   }
 ```
 
-We will initialize a `FormData` Object and inside it we added all our values, but for the image we used `MultipartFile.fromFile`.
+We initialized a `FormData` object, and inside it, we passed all of our values, but for the image we passed `MultipartFile.fromFile`.
 
-Now let's take a look at our endpoint:
+Now, let's take a look at our endpoint:
 
 ```
 Post, https://coded-books-api-crud.herokuapp.com/books
 ```
 
-So the type is `post` and rest is the same:
+As you can see, the type of our request is `post`:
 
 ```dart
   Future<Book> createBook({required Book book}) async {
@@ -73,20 +69,20 @@ So the type is `post` and rest is the same:
   }
 ```
 
-And as a third argument, we'll pass the data:
+**Note:** When the type of the request is post or update, the backend will expect data from the frontend, and that data will be sent as a second argument along with the endpoint as follows:
 
 ```dart
       Response response = await _dio.post(_baseUrl + '/books', data: data);
 ```
 
-Lastly we'll assign the response to our `retrievedBook` like we did with the `get` request:
+4. Assign the response to the `retrievedBook`:
 
 ```dart
       Response response = await _dio.post(_baseUrl + '/books', data: data);
       retrievedBook = Book.fromJson(response.data);
 ```
 
-Return the book from the function:
+5. Return the book:
 
 ```dart
     [...]
@@ -97,7 +93,7 @@ Return the book from the function:
 }
 ```
 
-Now Back to our provider, we'll make almost the same function:
+6. Back to the provider, create a void function that calls the `createBook` function inside, and pass the new book to it:
 
 ```dart
   void createBook(Book book) async {
@@ -105,7 +101,7 @@ Now Back to our provider, we'll make almost the same function:
   }
 ```
 
-And back to our form button, we will call this function from our provider:
+7. Back to the button in the form, pass the `createBook` function from the provider:
 
 ```dart
 ElevatedButton(
@@ -125,9 +121,13 @@ ElevatedButton(
     ),
 ```
 
-We passed our values to the function, and then we we called the `pop` method to go to the previous page.
+We passed the values to the function, and called the `pop` method to go back to the previous page.
 
-Wait, our book is not added.. let's restart our app, oh here it is, but why that happened? that's because we added the book to the backend, so we need to do the `get` request again to get the updates, a solution for that is to add the book to the front end after we finish our call, so in your provider:
+Wait! Our book is not added... Let's restart our app. Oh! here it is, but why did that happen?
+
+Because we added the book to the backend, and we need to make a `get` request again to get the updates. To do that, we have to add the book in the front end after we finish our call.
+
+8. In the provider, add the following code:
 
 ```dart
     Book newBook = await BooksServices().createBook(book: book);

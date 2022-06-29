@@ -1,16 +1,17 @@
-In our application, we will need a server that will provide us with the books data we need, and the server that we will use is the `https://coded-books-api-crud.herokuapp.com`. This server will provide us with the data we need and will accept some operations on the data.
+In our application, we need a server that provides us with the books data. This server is the `https://coded-books-api-crud.herokuapp.com`.
+This server will not only help us to get the data, but also to make some operations on it, such as adding, deleting, or updating data.
 
-To communicate with this server, we will use the HTTP requests.
+To communicate with this server, we will use HTTP requests.
 
 ![img](https://miro.medium.com/max/1400/1*2UbC5pSRyjGmF1ezB9hvYg.png)
 
-We will use the `dio` library in order to request the date. We will tell the server we need the list of books with their price, title, image etc..., and then the server will send us back the data we need.
+In addition, we will use the `dio` library to request the data, and tell the server we need the list of books with their prices, titles, images, etc, and then the server will send us back the data we need.
 
-The format that the server will give it to us is called `JSON`. But what is `JSON`?
+The format that the server gives us is called `JSON`.
 
-`JSON`, or JavaScript Object Notation, is a minimal, readable format for structuring data. It is used primarily to transmit data between a server and web application, no matter what the programming language used on either side,they can communicate and transmit data using `JSON`.
+`JSON`, or JavaScript Object Notation, is a minimal, readable format for structuring data. It is used primarily to transmit data between a server and web application. No matter which programming language is used on either side, they can communicate and transmit data using `JSON`.
 
-How does `JSON` structure looks?
+How does `JSON` structure look?
 
 ```json
 {
@@ -22,9 +23,9 @@ How does `JSON` structure looks?
 }
 ```
 
-As you can see, it's a key-value pairs, very similar to dart maps.
+As you can see, it is made of key-value pairs, similar to dart maps.
 
-However, we still have to convert the `JSON` data to dart `maps`. and we can do this in our model using a factory constructor:
+However, we still have to convert the `JSON` data to dart `maps`, and we can do this in our model using a factory constructor:
 
 ```dart
 class Book {
@@ -50,7 +51,7 @@ class Book {
 }
 ```
 
-And here is our API end points and we will go through them one by one:
+The following URLs are the API endpoints that will be used in the app. We will go through them one by one:
 
 ```
 Get, https://coded-books-api-crud.herokuapp.com/books

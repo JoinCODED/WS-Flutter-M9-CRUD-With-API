@@ -1,4 +1,6 @@
-In your `widgets` folder, create `add_form.dart` widget and inside it initialize a stateFul widget:
+We used to add `TextField`s to take inputs from the user. Now, we will use the `Form` instead.
+
+1. In your `widgets` folder, create `add_form.dart` file, and initialize a stateFul widget in it:
 
 ```dart
 class AddBookForm extends StatefulWidget {
@@ -17,7 +19,7 @@ class AddBookFormState extends State<AddBookForm> {
 }
 ```
 
-Firstly, we need to create a global key that uniquely identifies the Form widget and allows validation of the form.
+2. Create a global key that uniquely identifies the Form widget and allows validation of the form.
 
 ```dart
 class AddBookFormState extends State<AddBookForm> {
@@ -29,7 +31,7 @@ class AddBookFormState extends State<AddBookForm> {
 }
 ```
 
-Now we will return a `Form` widget and assign it the `key` we just created:
+3. Return a `Form` widget and assign the `key` we just created to it:
 
 ```dart
 Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ return Form(
 }
 ```
 
-Inside this `Form` widget, we will create `TextFormField`s instead of regular `TextField`s for each of our properties except our `image` for now:
+4. Inside the `Form` widget, create `TextFormField`s instead of regular `TextField`s for each of our properties except the `image` for now:
 
 ```dart
     return Form(
@@ -74,7 +76,7 @@ Inside this `Form` widget, we will create `TextFormField`s instead of regular `T
     );
 ```
 
-Now import your widget in the `add_page.dart`.
+5. Import the `add_form.dart` widget in the `add_page.dart`.
 
 ```dart
 class AddPage extends StatelessWidget {
@@ -101,26 +103,28 @@ class AddPage extends StatelessWidget {
 }
 ```
 
-So what's special about it? let's add a `validator` property to our first field:
+So far, nothing is special about it. Let's add a `validator` property to our first field:
 
 ```dart
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Book title',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return "please fill out this field";
-              } else {
-                return null;
-              }
-            },
-          ),
+      TextFormField(
+        decoration: const InputDecoration(
+          hintText: 'Book title',
+        ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "please fill out this field";
+          } else {
+            return null;
+          }
+        },
+      ),
 ```
 
-This `validator` property will give us the current `value` of the field, and if we returned something, it means the value the user entered is not valid, and if we returned `null` it means everything is ok.
+This `validator` property gives us the current `value` of the field, if we returned something like a message, it means the value the user entered is not valid, and if we returned `null` it means everything is ok.
 
-But when does this `validator` runs? when we call `_formKey.currentState!.validate()`. so let's call it in our button:
+When does this `validator` run? Basically, when we call `_formKey.currentState!.validate()`.
+
+Let's call it in our button:
 
 ```dart
 ElevatedButton(
@@ -131,9 +135,9 @@ ElevatedButton(
     ),
 ```
 
-Now leave the field empty and click the button, an error should appear.
+Leave the field empty and click the button. An error should appear.
 
-Let's add `validator`s to our other fields, specially our `price` field, we want to make sure the user enters a valid number:
+Let's add `validator`s to our other fields, in particular our `price` field. We want to make sure the user enters a valid number:
 
 ```dart
 TextFormField(
@@ -164,9 +168,9 @@ TextFormField(
           ),
 ```
 
-Now were is our controllers? we will replace them with normal variables and save the values using the `onSaved` property.
+We will replace the controllers with regular variables and save the values using the `onSaved` property.
 
-Create a variable for each property we have:
+6. Create a variable for each property we have:
 
 ```dart
   String title = "";
@@ -174,7 +178,7 @@ Create a variable for each property we have:
   double price = 0;
 ```
 
-Then on each field, use the `onSaved` to store the `value` in the respective variable:
+Then, in each field, use the `onSaved` to store the `value` in the respective variable:
 
 ```dart
 Form(
@@ -244,4 +248,4 @@ Form(
     );
 ```
 
-`_formKey.currentState!.save()` will run all our `onSaved` methods we created and that happens only if all fields are valid because we checked for `_formKey.currentState!.validate()` first which will return `true` if no errors is there.
+`_formKey.currentState!.save()` runs all the onSaved methods we created only if all fields are valid. That is because we added a condition for `_formKey.currentState!.validate()`, which will return true if no errors are there.

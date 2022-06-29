@@ -1,6 +1,4 @@
-Like we did before, we will pass the book using route params.
-
-In your `main.dart` define the route and a param called `bookId`.
+2. In the `main.dart`, define a route with a param called `bookId`.
 
 ```dart
 GoRoute(
@@ -11,7 +9,7 @@ GoRoute(
       ),
 ```
 
-Now we will call our provider, search for the book with the same `id` and pass it to the `UpdatePage`.
+1. Call the provider and use the `firstWhere` method to look for a book with the same `id`, then pass the book that we found to the `UpdatePage` widget.
 
 ```dart
 GoRoute(
@@ -24,7 +22,7 @@ GoRoute(
       ),
 ```
 
-Now in the `book_card.dart` we have an edit icon, clicking on it should take us to the update page and pass the book `id` with it:
+4. In the edit icon button inside the `book_card.dart`, use the `GoRouter.push` method and pass the path along with the book `id` to it:
 
 ```dart
 IconButton(
@@ -34,9 +32,9 @@ IconButton(
     icon: const Icon(Icons.edit)),
 ```
 
-In your form, we accepted the book argument in our parent widget, how can we access it within our child widget?
+We accepted the book argument in the parent widget, how can we access it within our child widget?
 
-Under your build method, you can access the book using `widget.book`:
+5. Under your build method, you can access the book using `widget.book`:
 
 ```dart
   Widget build(BuildContext context) {
@@ -45,7 +43,7 @@ Under your build method, you can access the book using `widget.book`:
 [...]
 ```
 
-And now we can add `initialValue` property to all our fields using the book object we received:
+6. Add the `initialValue` property to all the fields using the received book object:
 
 ```dart
 Form(
@@ -159,4 +157,4 @@ Form(
     );
 ```
 
-We have been going from a file to file for a long time, we are almost done, phew..
+We have been going from file to file for a long time, we are almost done, phew..

@@ -1,10 +1,10 @@
-In the books provider, notice how we are calling the `BooksServices` many times, for each time we are creating an instance and saving it in the memory, but we actually need one instance, saving our self from filling the device memory with useless data.
+In the book provider, notice how we are calling the `BooksServices` many times. Each time we are creating an instance and saving it in the memory, but we actually need one instance to save ourselves from filling the device memory with useless data.
 
 To achieve that we will use a `Singleton`.
 
-A singleton is a pattern used in object-oriented programming which ensures that a class has only one instance and also provides a global point of access to it.
+A `singleton` is a pattern used in object-oriented programming, which ensures that the class has only one instance. In addition to that, it provides global access to it.
 
-To create a singleton for our `services/books.dart`:
+1. In the `services/books.dart` file, paste the code below to create a singleton:
 
 ```dart
 class BooksServices {
@@ -14,7 +14,7 @@ class BooksServices {
 }
 ```
 
-Then in your books provider, replace each `BooksServices()` with `BooksServices.shared`.
+2. In the books provider, replace each `BooksServices()` with `BooksServices.shared`.
 
 ```dart
     Future<void> getBooks() async {

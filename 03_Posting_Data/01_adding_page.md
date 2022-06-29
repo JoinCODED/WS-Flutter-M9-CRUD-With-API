@@ -1,6 +1,6 @@
-Now we will learn how to send a new book to the backend to be saved in the database.
+In this section, we will learn how to send a new book to the backend to be saved in the database.
 
-First step is to create `add_page.dart` file in the `pages` folder.
+1. Create a new file named `add_page.dart` in the `pages` folder, and set it up as follows:
 
 ```dart
 class AddPage extends StatelessWidget {
@@ -26,7 +26,7 @@ class AddPage extends StatelessWidget {
 }
 ```
 
-And we should include this route in our routes in `main.dart`:
+2. Create a route for the `add_page.dart` file in the `main.dart`:
 
 ```dart
   final _router = GoRouter(
@@ -43,7 +43,7 @@ And we should include this route in our routes in `main.dart`:
   );
 ```
 
-Then in your `home_page.dart` point the `add a new book` button to the page we just created:
+3. In the `home_page.dart` file, point the `add a new book` button to the page we just created (`add_page.dart`):
 
 ```dart
     child: ElevatedButton(
@@ -51,5 +51,3 @@ Then in your `home_page.dart` point the `add a new book` button to the page we j
         GoRouter.of(context).push('/add');
 },
 ```
-
-We used to do `TextField`s, but this time we will create a `Form` widget, and also we will learn whats the difference and why we use `Forms`.

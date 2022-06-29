@@ -1,35 +1,32 @@
-To start interacting with our `api`, we need a package that will help us do so.
+To start interacting with the `API`, we need a package that helps us do so.
 
-Install the `dio` package into your project:
+1. Install the `dio` package into your project:
 
 ```shell
 flutter pub add dio
 ```
 
-Then, Create a folder named `services` and inside it, create a `books.dart` file.
+2. Create a new folder named `services`, and inside it, create a `books.dart` file.
 
-Now let's import the `dio` package in our new file:
+3. Import the `dio` package in the `books.dart` file:
 
 ```dart
 import "package:dio/dio.dart";
 ```
 
-Then, we will create a new `BooksServices` class:
+4. Inside the `books.dart` file, create a `BooksServices` class and initialize a new `dio` instance:
 
 ```dart
 class BooksServices {
+
+final Dio _dio = Dio();
+
 }
 ```
 
-Inside this class, we will initialize a new dio instance:
+**Note:** We made it private because it should not be accessed outside this file.
 
-```dart
-  final Dio _dio = Dio();
-```
-
-We are making it private because it should'nt be accessed outside this file.
-
-Now let's take a look at our api endpoints again:
+Take a look at the API endpoints again:
 
 ```
 Get, https://coded-books-api-crud.herokuapp.com/books
@@ -38,7 +35,9 @@ Put, https://coded-books-api-crud.herokuapp.com/books/{bookId}
 Delete, https://coded-books-api-crud.herokuapp.com/books/{bookId}
 ```
 
-You may have noticed, they are all start with the same `https://coded-books-api-crud.herokuapp.com`, so it would be a smart idea to hold this value in a variable and let's name it `baseUrl`:
+You may notice that they all start with the same `https://coded-books-api-crud.herokuapp.com`, and thus, it would be a smart idea to hold this value in a variable.
+
+5. Create a private variable named `baseUrl`:
 
 ```dart
 class BooksServices {
@@ -48,10 +47,11 @@ class BooksServices {
 }
 ```
 
-Thats it, we are ready to make our first api call, which is this one:
+Now, we are ready to make our first API call, which is the following one:
 
 ```
 Get, https://coded-books-api-crud.herokuapp.com/books
 ```
 
-Try it in your browser first, see how the data looks, exactly like our model, in fact, we should always look at the data first then create out model to match that data shape.
+Try it in your browser first to see what the data looks like. It looks exactly like our model.
+In fact, you should always take a look at the data before creating a model to match that data shape.
